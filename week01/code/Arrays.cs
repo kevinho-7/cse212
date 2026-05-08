@@ -13,7 +13,26 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // Fist I need a list of doubles to store the results of the multiplications
+        // A variable that stores the multipliers, It needs to be initialized with a number 1
+        // A forloop, while variable "i" is less than "length" or equal to it, the variable "result" computes the "number" parameter times the "multiplier"
+        // add 1 to the "multiplier" every time that the loop iterates -> 1st time (7*1), 2nd time (7*2) .....
+        // the "result" is added to "multiples" list
+        // return the "multiples" list converting it to an array
+
+        var multiples = new List<double>();
+        int multiplier = 1;
+
+        for(int i = 1; i <= length; i++)
+        {
+            double result = 0;
+            result = number * multiplier;
+            multiplier++;
+
+            multiples.Add(result);
+        }
+
+        return multiples.ToArray(); // replace this return statement with your own
     }
 
     /// <summary>
