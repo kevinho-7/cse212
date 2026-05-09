@@ -48,5 +48,16 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // The plan is store the last items in a new lis using the lista "data"
+        // for that we need to compute the size of the data list and subtract by the "amount param"
+        // and store in the new list the range (data.Count - amount, amount)
+        // remove a range of the data list using the same calculation of count - amount
+        // and the last step is insert at the beginning (index 0) the variable list that stored the lest itemssas  
+
+        List<int> lastItems = data.GetRange(data.Count - amount, amount);
+        data.RemoveRange(data.Count - amount, amount);
+        data.InsertRange(0, lastItems);
+
     }
 }
