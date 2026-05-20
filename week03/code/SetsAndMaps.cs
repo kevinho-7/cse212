@@ -21,8 +21,26 @@ public static class SetsAndMaps
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     public static string[] FindPairs(string[] words)
     {
-        // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        HashSet<string> setWords = new HashSet<string>(words);
+        HashSet<string> setReversedWords = words.Select(word => new string(word.Reverse().ToArray())).ToHashSet();
+        HashSet<string> pairs = new HashSet<string>();
+
+        foreach(string word in setWords)
+        {
+            string reversedW = new string(word.Reverse().ToArray());
+
+            if(setWords.Contains(word) && setReversedWords.Contains(word))
+            {
+                if(word != reversedW)
+                {
+                    pairs.Add($"{reversedW} & {word}");
+                    setReversedWords.Remove(word);
+                    setReversedWords.Remove(reversedW);
+                }
+            }
+        }
+
+        return pairs.ToArray();
     }
 
     /// <summary>
