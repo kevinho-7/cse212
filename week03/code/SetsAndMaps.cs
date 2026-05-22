@@ -92,14 +92,39 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        bool IsAnagram = false;
+        var lettersDictionary = new Dictionary<char, int>();
 
-        if(word1 != new string(word2.Reverse().ToArray()))
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
+
+        if(word1.Length != word2.Length)
         {
-            IsAnagram = true;
+            return false;
         }
 
-        return IsAnagram;
+        string bigWord = word1 + word2;
+
+        foreach(var letter in bigWord)
+        {
+            if (!lettersDictionary.ContainsKey(letter))
+            {
+                lettersDictionary[letter] = 1;
+            }
+            else
+            {
+                lettersDictionary[letter]++;
+            }
+        }
+
+        foreach(var c in lettersDictionary)
+        {
+            if(c.Value % 2 != 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /// <summary>
