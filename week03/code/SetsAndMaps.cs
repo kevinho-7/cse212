@@ -163,7 +163,7 @@ public static class SetsAndMaps
 
         var result = new List<string>();
 
-        foreach(var f in featureCollection.features)
+        foreach(var f in featureCollection.Features)
         {
             string earthquake = $"{f.Properties.Place} - Mag {f.Properties.Mag}";
             
